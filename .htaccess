@@ -1,0 +1,15 @@
+Options -Indexes
+
+RewriteEngine On
+
+# _kontrol.php, auth.php, db.php gibi backend dosyalarına dokunma
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !\.(php|css|js|png|jpg|jpeg|gif|ico|svg|pdf|xlsx|woff2?)$ [NC]
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# Sadece UI sayfalarında .php → uzantısız canonical redirect (POST'lara dokunma)
+RewriteCond %{REQUEST_METHOD} GET
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.php[\s?] [NC]
+RewriteCond %{REQUEST_URI} !/(.*_kontrol|auth|db|config|menu|login_kontrol|cikis|menu_kapat|fatura_public|makbuz_public|servis_print|fatura_pdf|db_migrate) [NC]
+RewriteRule ^ /%1 [R=301,L,NE]
