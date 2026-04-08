@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "FaturaApp PHP Server",
+      "runtimeExecutable": "C:/laragon/bin/php/php-8.3.26-Win32-vs16-x64/php.exe",
+      "runtimeArgs": ["-S", "localhost:8081", "-t", "."],
+      "port": 8081
+    },
+    {
+      "name": "GencerPOS Website",
+      "runtimeExecutable": "C:/laragon/bin/php/php-8.3.26-Win32-vs16-x64/php.exe",
+      "runtimeArgs": ["-S", "localhost:8082", "-t", "website"],
+      "port": 8082
+    }
+  ]
+}
